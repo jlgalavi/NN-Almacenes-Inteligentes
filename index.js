@@ -154,24 +154,12 @@ btnConfirm.addEventListener('click', (e) =>
         };
     });
 
-    fetch('https://upvedues-my.sharepoint.com/personal/jlgalavi_upv_edu_es/_layouts/15/onedrive.aspx?view=0&id=%2Fpersonal%2Fjlgalavi%5Fupv%5Fedu%5Fes%2FDocuments%2Forders', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderData)
-    })
-        .then(response => response.json())
-        .then(data => {
-            const element = document.createElement('a');
-            const file = new Blob([data.orderText], { type: 'text/plain' });
-            element.href = URL.createObjectURL(file);
-            element.download = 'order.txt';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    const orderText = orderData.map(data => `Product ID: ${data.id}, Quantity: ${data.quantity}`).join('\n');
+    const element = document.createElement('a');
+    const file = new Blob([orderText], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = 'order.txt';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 });
