@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b8572695f.js" crossorigin="anonymous"></script>
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo nav-links">
+                <img src="images/image.png" alt="Logo NN" width="65px" height="65px"/>
+            </a>
+            <button class="nav-toggle" arial-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-menu nav-menu_visible">
+                <li class="nav-menu-item">
+                    <a href="index.html" class="nav-menu-link nav-links ">Volver al inicio</a>
+                </li>
+            </ul>
+            <div class="cart">
+                <div class="container-icon-buy">
+                    <a href="#" class="icon-buy">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </a>               
+                </div>
+                <div class="cont-products">
+                    <span id="contador-productos">
+                        0
+                    </span>
+                </div>
+                <div class="container-cart-products hidden-cart">
+                    <div class="row-product">
+                    </div>
+                    <div class="cart-total">
+                        <h3>
+                            Total: 
+                        </h3>
+                        <span class="total-price"></span>
+                    </div>
+                    <button class="btn-buy">
+                        Completa tu compra
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="section" id="Pedidos">
+        <div class="Pedidos-container">
+            <h1 class="Pedidos-title">
+                Pedidos
+            </h1>
+            <section class="Pedidos-list">
+                <div class="Pedidos-item">
+                    <img src="images/svg/Logo_NN_Black.svg" alt="Producto 1" class="Pedidos-image"/>
+                    <h2 class="Pedidos-item-title">
+                        BOX S
+                    </h2>
+                    <p class="Pedidos-item-text">
+                        100mm x 50mm x 30mm
+                    </p>
+                    <p class="price-product">
+                        5 €
+                    </p>
+                    <button class="btn-pedidos">
+                        Añadir al carrito
+                    </button>
+                </div>
+                <div class="Pedidos-item">
+                    <img src="images/svg/Logo_NN_Black.svg" alt="Producto 2" class="Pedidos-image"/>
+                    <h2 class="Pedidos-item-title">
+                        BOX M
+                    </h2>
+                    <p class="Pedidos-item-text">
+                        150mm x 120mm x 100mm
+                    </p>
+                    <p class="price-product">
+                        10 €
+                    </p>
+                    <button class="btn-pedidos">
+                        Añadir al carrito
+                    </button>
+                </div>
+                <div class="Pedidos-item">
+                    <img src="images/svg/Logo_NN_Black.svg" alt="Producto 3" class="Pedidos-image"/>
+                    <h2 class="Pedidos-item-title">
+                        BOX L
+                    </h2>
+                    <p class="Pedidos-item-text">
+                        200mm x 210mm x 70mm
+                    </p>
+                    <p class="price-product">
+                        15 €
+                    </p>
+                    <button class="btn-pedidos">
+                        Añadir al carrito
+                    </button>
+                </div>
+                <div class="Pedidos-item">
+                    <img src="images/svg/Logo_NN_Black.svg" alt="Producto 4" class="Pedidos-image"/>
+                    <h2 class="Pedidos-item-title">
+                        BOX XL
+                    </h2>
+                    <p class="Pedidos-item-text">
+                        250mm x 300mm x 210mm
+                    </p>
+                    <p class="price-product">
+                        20 €
+                    </p>
+                    <button class="btn-pedidos">
+                        Añadir al carrito
+                    </button>
+                </div>
+            </section>
+        </div>  
+    </section>  
+</body>
+</html>
