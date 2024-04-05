@@ -154,7 +154,7 @@ btnConfirm.addEventListener('click', (e) =>
         };
     });
 
-    fetch('https://upvedues-my.sharepoint.com/personal/jlgalavi_upv_edu_es/_layouts/15/onedrive.aspx?view=0&id=%2Fpersonal%2Fjlgalavi%5Fupv%5Fedu%5Fes%2FDocuments%2Forders', {
+    fetch('https://github.com/jlgalavi/NN-Almacenes-Inteligentes.github.io/tree/main/files', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
