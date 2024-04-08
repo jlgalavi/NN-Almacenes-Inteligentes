@@ -1,165 +1,191 @@
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
+var swiper = new Swiper('.mySwiper-1', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
 
-navToggle.addEventListener('click', () => 
-{
-    navMenu.classList.toggle('nav-menu_visible')
-    if(navMenu.classList.contains('nav-menu_visible'))
-    {
-        navToggle.setAttribute('aria-label', 'Close menu');
+});
+
+var swiper = new Swiper('.mySwiper-2', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        0: {    
+            slidesPerView: 1,
+        },
+        520: {  
+            slidesPerView: 2,
+        },
+        950: {
+            slidesPerView: 3,
+        },
     }
-    else
-    {
-        navToggle.setAttribute('aria-label', 'Open menu');
-    }
+
 });
 
-const menuLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
-menuLinks.forEach(menuLink => 
-    {
-    menuLink.addEventListener('click', () => {
-        navMenu.classList.remove('nav-menu_visible');
-        navToggle.setAttribute('aria-label', 'Close menu');
-    });
-});
-
-const btnCart = document.querySelector('.container-icon-buy');
-const containerCartProducts = document.querySelector('.container-cart-products');
-
-btnCart.addEventListener('click', () => 
-{
-    containerCartProducts.classList.toggle('hidden-cart');
-});
-
-const cartInfo = document.querySelector('.cart-product');
-const rowProduct = document.querySelector('.row-product');
-
-const productsList = document.querySelector('.Pedidos-list');
+const cartInfo = document.querySelector('.cart-menu');
+const rowProducts = document.querySelector('#cart-list');
+const productsList = document.querySelector('#products-list');
 
 let allProducts = [];
 
 const valorTotal = document.querySelector('.total-price');
+const btnBuyCart = document.querySelector('.btn-buy-cart');
 
-const countProducts = document.querySelector('#contador-productos');
-
-const btnConfirm = document.querySelector('.btn-buy');
-
-productsList.addEventListener('click', (e) =>
-{
-    if(e.target.classList.contains('btn-pedidos'))
-    {
-        const product = e.target.parentElement;
-        const infoProduct = 
+productsList.addEventListener('click', (e) => {
+    if(e.target.classList.contains('btn-add-cart')) {
+        const product = e.target.parentElement.parentElement;
+        const productInfo = 
         {
+            image: product.querySelector('img').src,
+            title: product.querySelector('h3').textContent,
+            price: product.querySelector('.price').textContent,
+            id: product.querySelector('button').getAttribute('data-id'),
             quantity: 1,
-            title: product.querySelector('.Pedidos-item-title').textContent,
-            price: product.querySelector('.price-product').textContent,
         };
-
-        const productExist = allProducts.some(product => product.title === infoProduct.title);
-        
-        if(productExist)
-        {
+        const productExist = allProducts.some(product => product.id === productInfo.id);
+        if(productExist) {
             const products = allProducts.map(product => 
-            {
-                if(product.title === infoProduct.title)
-                {
-                    product.quantity++;
-                    return product;
-                }
-                else
-                {
-                    return product;
-                }
-            });
+                product.id === productInfo.id ? {...product, quantity: product.quantity + 1} : product
+            );
             allProducts = [...products];
         }
         else
         {
-            allProducts = [...allProducts, infoProduct];
-        }       
-        showHTML();
-    }
-});
-
-rowProduct.addEventListener('click', (e) =>
-{
-    if(e.target.classList.contains('icon-close'))
-    {
-        const product = e.target.parentElement;
-        const title = product.querySelector('.title-product-cart').textContent;
-
-        allProducts = allProducts.filter(product => product.title !== title);
-        showHTML();
-    }
-});
-
-const showHTML = () =>
-{
-
-    rowProduct.innerHTML = '';
-    let total = 0;
-    let totalOfProducts= 0;
-
-
-    allProducts.forEach(product =>
-    {
-        const containerProduct = document.createElement('div');
-        containerProduct.classList.add('cart-product');
-        containerProduct.innerHTML = `
-            <div class="info-cart-product">
-                <span class="cantidad-productos">${product.quantity}</span>
-                <p class="title-product-cart">${product.title}</p>
-                <span class="price-product-cart">${product.price}</span>
-                </div>
-                <a href="#" class="icon-close">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </a>
-        `;
-        rowProduct.append(containerProduct);
-
-        total = total + (parseInt(product.price.replace('€', '')) * product.quantity);
-        totalOfProducts = totalOfProducts + product.quantity;
-    });
-
-    valorTotal.innerText = `${total}€`; 
-    countProducts.innerText = totalOfProducts;
-
-};
-
-btnConfirm.addEventListener('click', (e) => 
-{
-    const orderData = allProducts.map((product, index) => {
-        let productId;
-        switch (product.title) {
-            case 'BOX S':
-                productId = 1;
-                break;
-            case 'BOX M':
-                productId = 2;
-                break;
-            case 'BOX L':
-                productId = 3;
-                break;
-            case 'BOX XL':
-                productId = 4;
-                break;
-            default:
-                productId = 0;
-                break;
+            allProducts = [...allProducts, productInfo];
         }
-        return {
-            id: productId,
-            quantity: product.quantity
-        };
-    });
-
-    const orderText = orderData.map(data => `Product ID: ${data.id}, Quantity: ${data.quantity}`).join('\n');
-    const element = document.createElement('a');
-    const file = new Blob([orderText], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = 'order.txt';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    showHTML();
+    }
 });
+
+rowProducts.addEventListener('click', (e) => {
+    if(e.target.classList.contains('remove')) {
+        const product = e.target.parentElement.parentElement;
+        const productId = product.querySelector('a').getAttribute('data-id');
+        allProducts = allProducts.filter(product => product.id !== productId);
+        product.remove();
+    }
+    showHTML();
+});
+
+const showHTML = () => 
+{
+    rowProducts.innerHTML = '';
+    let total = 0;
+    let totalQuantity = 0;
+
+
+    allProducts.forEach(product => {
+        const {image, title, price, quantity, id} = product;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>
+                <img src="${image}" width=100>
+            </td>
+            <td>${title}</td>
+            <td>${price}</td>
+            <td>${quantity}</td>
+            <td>
+                <a href="#" class="remove" data-id="${id}">X</a>
+            </td>
+        `;
+        rowProducts.append(row);
+        total += quantity * parseFloat(price.replace('€', ''));
+        totalQuantity += quantity;
+        
+    });
+    valorTotal.innerText = `${total}€`;
+}
+
+/*
+const cart = document.getElementById('.cart');
+const productsElemets = document.getElementById('products-list');
+const products = document.querySelector('#cart-list tbody');
+const clearCartBtn = document.getElementById('empty-cart');
+
+loadEventListeners();
+
+function loadEventListeners() {
+    productsElemets.addEventListener('click', buyProduct);
+    cart.addEventListener('click', removeProduct);
+    clearCartBtn.addEventListener('click', clearCart);
+}
+
+function buyProduct(e) {
+    e.preventDefault();
+    if(e.target.classList.contains('btn-add-cart')) {
+        const product = e.target.parentElement.parentElement;
+        getProductInfo(product);
+    }
+}
+
+function getProductInfo(product) {
+    const productInfo = {
+        image: product.querySelector('img').src,
+        title: product.querySelector('h3').textContent,
+        price: product.querySelector('.price').textContent,
+        id: product.querySelector('a').getAttribute('data-id'),
+        quantity: 1,
+    };
+    const productExist = productsElemets.some(product => product.id === productInfo.id);
+    if(productExist) {
+        const products = document.map(product => 
+            product.id === productInfo.id ? {...product, quantity: product.quantity + 1} : product
+        );
+        productsElemets = [...products];
+        }
+        else
+        {
+            productsElemets = [...productsElemets, productInfo];
+        }
+       addIntoCart(productInfo);
+}
+
+function addIntoCart(product) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>
+            <img src="${product.image}" width=100>
+        </td>
+        <td>${product.title}</td>
+        <td>${product.price}</td>
+        <td></td>
+        <td>
+            <a href="#" class="remove" data-id="${product.id}">X</a>
+        </td>
+    `;
+    products.appendChild(row);
+}
+
+function removeProduct(e) {
+    e.preventDefault();
+    let product, productId;
+    if(e.target.classList.contains('remove')) {
+        e.target.parentElement.parentElement.remove();
+        product = e.target.parentElement.parentElement;
+        productId = product.querySelector('a').getAttribute('data-id');
+    }
+}
+
+function clearCart() {
+    while(products.firstChild) {
+        products.removeChild(products.firstChild);
+    }
+    return false;
+}*/
