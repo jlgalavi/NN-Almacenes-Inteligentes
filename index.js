@@ -39,6 +39,32 @@ var swiper = new Swiper('.mySwiper-2', {
 
 });
 
+var swiper = new Swiper('.mySwiper-3', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        0: {    
+            slidesPerView: 1,
+        },
+        520: {  
+            slidesPerView: 2,
+        },
+        950: {
+            slidesPerView: 3,
+        },
+    }
+
+});
+
 const cartInfo = document.querySelector('.cart-menu');
 const rowProducts = document.querySelector('#cart-list');
 const productsList = document.querySelector('#products-list');

@@ -13,7 +13,7 @@
 body 
 {
     font-family: 'Poppins', sans-serif;
-    background-color: #242430;
+    background-color: #061f3d;
 }
 
 .container
@@ -26,7 +26,7 @@ body
 {
     display: flex;
     align-items: center;
-    min-height: 80vh;
+    min-height: 70vh;
 }
 
 .swiper-wrapper
@@ -70,7 +70,7 @@ body
 
 .swiper-pagination-bullet-active
 {
-    background-color: #ffffff;
+    background-color: #d2d2d2;
 }
 
 .menu
@@ -87,9 +87,8 @@ body
 
 .logo
 {
-    color: #ffffff;
-    font-size: 25px;
-    font-weight: 800;
+    width: 65px;
+    height: 65px;
 }	
 
 .menu-icono
@@ -208,17 +207,22 @@ th, td
 .header-info
 {
     display: flex;
+    background-color: white;
+    border-radius: 20px;
+    padding-left: 40px;
 }
 
 .header-txt
 {
+    text-align: center;
     width: 50%;
 }
 
 .header-txt h1
 {
+    margin-top: 80px;
     font-size: 50px;
-    color: #ffffff;
+    color: #0d0d31;
     text-transform: capitalize;
     font-weight: 800;
 }
@@ -227,17 +231,22 @@ th, td
 {
     width: 50%;
     text-align: right;
+    
 }
 
 .header-img img
 {
-    width: 500px;
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 400px;
+    border-radius: 50%;
+    border: 3px solid #0d0d31;
 }
 
 .Descripcion
 {
-    display: flex;
-    margin: 20px 0;
+    font-size: 26px;
+    margin: 20px;
     color:#747b8f;
 }
 
@@ -250,6 +259,7 @@ th, td
     padding: 10px 25px;
     border-radius: 25px;
     margin-top: 40px;
+    
 }
 
 .btn-showmore:hover
@@ -269,12 +279,14 @@ hr
 {
     padding: 50px 0;
     text-align: center;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .tecnologies h2
 {
     font-size: 50px;
-    color: #ffffff;
+    color: #0d0d31;
     margin-bottom: 35px;
 }
 
@@ -288,16 +300,27 @@ hr
 .category
 {
     display: flex;
-    align-items: center;
     padding: 35px;
 }
 
-.category-1
+.category-txt
 {
+    text-align: center;
     width: 50%;
-    margin: 20px 0;
+    color: #0d0d31;
+} 
+
+.category-txt h3
+{
+    margin: 0 auto;
 }
- 
+
+.color
+{
+    color: #0d0d31;
+
+}
+
 .btn-tecnology-info
 {
     display: inline-block;
@@ -308,6 +331,7 @@ hr
     border-radius: 25px;
     margin-top: 40px;
 }
+
 .btn-tecnology-info:hover
 {
     background-color: #6c69f9;
@@ -323,6 +347,7 @@ hr
 
 .tecnology-description
 {
+    margin: 0 auto;
     color: #747b8f;
     font-size: 18px;
 } 
@@ -526,23 +551,10 @@ hr
         margin-bottom: 0;
     }
 
-    .categories
-    {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
     .category
     {
         flex-direction: column;
-        text-align: center;
         padding: 20px;  
-    }
-
-    .category-1
-    {
-        width: 100%;
-        margin-bottom: 25px;
-        order: -1;
     }
 
     .category-img 
@@ -550,6 +562,16 @@ hr
        width: 100%;
        margin-left: 15px;
     }
+
+    .category-txt h3
+    {
+        margin-left: 30px;
+    }
+
+    .tecnology-description
+    {
+       margin-left: 35px;
+    } 
 
     .products
     {
