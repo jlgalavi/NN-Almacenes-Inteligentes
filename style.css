@@ -10,6 +10,11 @@
     list-style: none;
 }
 
+html
+{
+    scroll-behavior: smooth;
+}
+
 body 
 {
     font-family: 'Poppins', sans-serif;
@@ -23,6 +28,13 @@ body
 }
 
 .header
+{
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.Nosotros
 {
     display: flex;
     align-items: center;
@@ -188,6 +200,7 @@ th, td
     font-weight: 800;
 
 }
+
 .btn-buy-cart
 {
     background-color: #7272ec;
@@ -198,10 +211,88 @@ th, td
     font-weight: 800;
 }
 
+.inicio-content
+{
+    margin-top: 80px;
+    height: 80vh !important;
+    width: 100%;
+    background-size: cover;
+    background: url("images/background.jpeg") no-repeat center center/cover;
+}
+
+.inicio-title
+{
+    background-color: #061f3d;
+    margin: 150px 200px  0 200px;
+    border-radius: 25px;
+}
+.inicio-title h1
+{
+    font-size: 40px;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.inicio-text
+{
+    font-size: 20px;
+    color: #747b8f;
+    text-align: center;
+    padding: 20px;
+}
+
+.pryecto-info
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    background-color: #061f3d;
+    border-radius: 25px;
+}
+
+.proyecto-content
+{
+    padding: 50px 0;
+    text-align: center;
+}
+
+.proyecto-title
+{
+    font-size: 50px;
+    color: #ffffff;
+    margin-bottom: 35px;
+}
+
+.proyecto-text
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.proyecto-paragraph
+{
+    background-color: rgba(255, 255, 255, 0.356);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+
 .header-content
 {
-    padding: 200px 0 100px 0;
+    padding: 100px 0 100px 0;
     margin: 0 auto;
+}
+
+.header-content h2
+{
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    margin-bottom: 35px;
 }
 
 .header-info
@@ -362,8 +453,16 @@ hr
 {
     font-size: 50px;
     color: #ffffff;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     text-align: center;
+}
+
+.products p
+{
+    font-size: 20px;
+    color: #747b8f;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .product
@@ -498,6 +597,16 @@ hr
         padding: 0 30px 50px 30px;
     }
 
+    .inicio-title h1
+    {
+        font-size: 20px;
+    }
+
+    .inicio-title
+    {
+        margin: 300px 40px 0 40px;
+    }
+
     .header-content
     {
         padding: 100px 0 50px 0;
@@ -598,5 +707,17 @@ hr
         width: 100%;
         margin-bottom: 20px;
     }
+    .proyecto-text
+    {
+    grid-template-columns: repeat(1, 1fr);
+    }
 
+}
+
+@media (max-width: 600px)
+{
+    .inicio-title h1
+    {
+        font-size: 14px;
+    }
 }
