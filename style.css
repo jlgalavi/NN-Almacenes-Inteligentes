@@ -528,6 +528,7 @@ hr
     .header-img img
     {
         width: 300px;
+        border-radius: 50%;
     }
 
     .Descripcion
