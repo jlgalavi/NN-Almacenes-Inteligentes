@@ -87,7 +87,7 @@ body
 
 .menu
 {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -95,6 +95,7 @@ body
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #061f3d;
 }
 
 .logo
@@ -327,8 +328,7 @@ th, td
 
 .header-img img
 {
-    margin-top: 5px;
-    margin-right: 5px;
+    margin: 5px;
     width: 400px;
     border-radius: 50%;
     border: 3px solid #0d0d31;
