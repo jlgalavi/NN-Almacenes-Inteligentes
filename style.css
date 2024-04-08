@@ -96,6 +96,7 @@ body
     justify-content: space-between;
     align-items: center;
     background-color: #061f3d;
+    padding: 0 20px;
 }
 
 .logo
@@ -667,6 +668,16 @@ hr
         margin-bottom: 0;
     }
 
+    .tecnologies-title
+    {
+        font-size: 20px;
+    }
+    
+    .tecnology-description
+    {
+        display: none;
+        font-size: 12px;
+    } 
     .category
     {
         flex-direction: column;
@@ -682,6 +693,7 @@ hr
     .category-txt h3
     {
         margin-left: 30px;
+        display: none;
     }
 
     .tecnology-description
